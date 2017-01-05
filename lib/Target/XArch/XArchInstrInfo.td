@@ -35,9 +35,16 @@ def MOVrr  : ALUInst<0b1101, (outs GRRegs:$dst), (ins GRRegs:$src),
                      [/* No pattern */]> {
 }
 
-def MOVi32 : InstXArch<(outs GRRegs:$dst), (ins i32imm:$src), "",
-                     [(set i32:$dst, (movei32 imm:$src))]> {
-  let isPseudo = 1;
+def MOVi32 : InstXArch<(outs GRRegs:$dst), (ins i32imm:$src), "mov $dst, $src",
+                     [(set i32:$dst, i16_imm:$src)]> {
+  bits<7> dst;
+  bits<16> src;
+
+  let Inst{31-30} = 0b00;
+  let Inst{29-26} = 0b1110;
+  let Inst{25-19} = dst;
+  let Inst{15-0} = src;
+
 }
 
 //===----------------------------------------------------------------------===//

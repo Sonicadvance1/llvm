@@ -10,6 +10,7 @@
 def MoveImm32Ty : SDTypeProfile<1, 1, [
   SDTCisSameAs<0, 1>, SDTCisInt<0>
 ]>;
+def i16_imm : Operand<i32>, ImmLeaf<i32, [{ return (Imm & ~0xFFFF) == 0; }]>;
 
 
 def XArchcallseq_start : SDNode<"ISD::CALLSEQ_START",
