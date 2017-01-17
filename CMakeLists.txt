@@ -335,6 +335,7 @@ set(LLVM_ALL_TARGETS
   RISCV
   Sparc
   SystemZ
+  ToyVLIW
   X86
   XCore
   )

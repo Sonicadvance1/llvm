@@ -953,6 +953,8 @@ StringRef ELFObjectFile<ELFT>::getFileFormatName() const {
              "ELF64-amdgpu-hsacobj" : "ELF64-amdgpu";
     case ELF::EM_BPF:
       return "ELF64-BPF";
+    case ELF::EM_TOYVLIW:
+      return "ELF64-TOYVLIW";
     default:
       return "ELF64-unknown";
     }
@@ -1026,6 +1028,9 @@ unsigned ELFObjectFile<ELFT>::getArch() const {
 
   case ELF::EM_BPF:
     return IsLittleEndian ? Triple::bpfel : Triple::bpfeb;
+
+  case ELF::EM_TOYVLIW:
+    return Triple::toyvliw;
 
   default:
     return Triple::UnknownArch;

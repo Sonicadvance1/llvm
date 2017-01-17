@@ -315,6 +315,7 @@ enum {
   // such numbers for an official value for WebAssembly. As soon as one is
   // allocated, this enum will be updated to use it.
   EM_WEBASSEMBLY = 0x4157, // WebAssembly architecture
+  EM_TOYVLIW = 0x9999,
 };
 
 // Object file classes.
@@ -615,6 +616,11 @@ enum {
 // ELF Relocation types for BPF
 enum {
 #include "ELFRelocs/BPF.def"
+};
+
+// ELF Relocation types for ToyVLIW
+enum {
+#include "ELFRelocs/ToyVLIW.def"
 };
 
 #undef ELF_RELOC
